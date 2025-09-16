@@ -1,0 +1,14 @@
+mkdir D:\Desktop\uccellina_audit
+
+
+set FILE=D:\Desktop\uccellina_multispettrale_normalised.tif
+rem Se il nome reale è "uccellina_multispectral_normalised.tif" usa quello:
+set FILE=D:\Desktop\uccellina_multispectral_normalised.tif
+set OUT=D:\Desktop\uccellina_audit
+
+gdalinfo "%FILE%"
+gdalsrsinfo "%FILE%"
+gdalsrsinfo -o epsg "%FILE%"
+
+rem Salva tutto in JSON (utile per il data card)
+gdalinfo -mm -stats -json "%FILE%" > "%OUT%\data_card_gdalinfo.json"
